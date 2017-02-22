@@ -1,5 +1,7 @@
 # vscode-gist
 
+オリジナルに proxy サポートを入れてみた版
+
 *** I have moved back to VIM. Looking for new maintainers. ***
 
 > Extension for Visual Studio Code to create, open and modify gists.

@@ -1,7 +1,10 @@
-// import * as vscode from 'vscode';
+import * as vscode from 'vscode';
 import auth = require("./auth");
+// import { configureHttpRequest } from '../baserequest';
+import * as request from 'request';
 
-var request = require("bluebird").promisify(require("request"));
+// var request = require("bluebird").promisify(require("request"));
+
 var api = "https://api.github.com";
 
 enum Type {
@@ -14,6 +17,8 @@ function send(method: string, path: string, auth_type?: Type, body?: Object) {
   var oauth = auth.getToken();
   var promise = auth_type !== Type.ANONYMOUS && !oauth ? auth.getCredentials() : Promise.resolve();
   return promise.then(function(creds) {
+    let httpSettings = vscode.workspace.getConfiguration('http');
+    let baseRequest = require("bluebird").promisify(request.defaults({'proxy': `${httpSettings.get('proxy')}`})); 
     console.log(creds);
     var options = {
       method: method,
@@ -32,7 +37,7 @@ function send(method: string, path: string, auth_type?: Type, body?: Object) {
         options.auth = creds;
       }
     }
-    return request(options);
+    return baseRequest(options);
   })
 }
 

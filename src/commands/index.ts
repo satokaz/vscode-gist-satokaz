@@ -2,9 +2,14 @@ import * as vscode from 'vscode';
 import Gist = require("../api/gist");
 import path = require("path");
 import fs = require("fs");
+// import * as request from 'request';
+
 var open = require('open');
 var tmp = require('tmp');
-var request = require("bluebird").promisify(require("request"));
+
+// let httpSettings = vscode.workspace.getConfiguration('http');
+// var baseRequest = request.defaults({'proxy': `${httpSettings.get('proxy')}`});
+// var baseRequest = require("bluebird").promisify(request.defaults({'proxy': `${httpSettings.get('proxy')}`}));
 
 
 export function createGist(type) {
