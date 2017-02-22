@@ -1,4 +1,4 @@
-import vscode = require('vscode');
+import * as vscode from 'vscode';
 import Gist = require("../api/gist");
 import path = require("path");
 import fs = require("fs");

@@ -1,4 +1,4 @@
-import vscode = require('vscode');
+// import * as vscode from 'vscode';
 import auth = require("./auth");
 
 var request = require("bluebird").promisify(require("request"));

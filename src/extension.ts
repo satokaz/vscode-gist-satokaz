@@ -1,7 +1,10 @@
-import commands = require("./commands");
+
+import * as vscode from 'vscode';
+import * as commands from './commands';
 import Gist = require("./api/gist");
-import vscode = require('vscode');
-import path = require("path");
+// import commands = require("./commands");
+// import vscode = require('vscode');
+// import path = require("path");
 
 function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('extension.privateGist', commands.createGist.bind(undefined, Gist.Type.PRIVATE)));
@@ -16,6 +19,6 @@ function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('extension.openGistInBrowser', commands.openGistInBrowser));
 
   vscode.workspace.onDidSaveTextDocument(commands.onSave);
-}
+} 
 
 exports.activate = activate;

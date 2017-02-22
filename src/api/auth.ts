@@ -1,4 +1,5 @@
-import vscode = require('vscode');
+import * as vscode from 'vscode';
+
 var shell = require('shelljs');
 //promise workaround for vscode issue #230
 var Promise = require("bluebird");
@@ -29,7 +30,7 @@ export function getCredentials() {
   if (!shell.which('git')) {
     return vscode.window.showErrorMessage("Sorry, git must be installed.");
   }
-  var user
+  var user;
   return getUser().then( u => {
     user = u;
     return getPass()

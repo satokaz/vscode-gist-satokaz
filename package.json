@@ -28,7 +28,7 @@
     "onCommand:extension.changeGistDescription",
     "onCommand:extension.openGistInBrowser"
   ],
-  "main": "./out/extension",
+  "main": "./out/src/extension",
   "contributes": {
     "commands": [
       {
@@ -85,11 +85,14 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
     "typescript": "^2.1.6",
+    "@types/node": "^7.0.4",
     "vscode": "1.0.3"
   },
   "dependencies": {
